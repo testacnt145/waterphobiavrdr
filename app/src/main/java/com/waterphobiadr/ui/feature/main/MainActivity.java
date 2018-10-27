@@ -52,13 +52,13 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         binding.patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Patient", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Patient Clicked", Toast.LENGTH_SHORT).show();
             }
         });
         binding.settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Settings Clicked", Toast.LENGTH_SHORT).show();
             }
         });
     }
