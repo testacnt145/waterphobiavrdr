@@ -3,14 +3,16 @@ package com.waterphobiadr.ui.feature.patientlist;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 import com.waterphobiadr.App;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
+import com.waterphobiadr.data.remote.model.Patient;
 import com.waterphobiadr.databinding.ActivityPatientListBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
+import com.waterphobiadr.ui.feature.patientlist.adapter.PatientAdapter;
+import java.util.ArrayList;
 import javax.inject.Inject;
 /*
  * Created by shayan.rais on 20/12/2017.
@@ -23,6 +25,8 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
     @Inject
     Repository repository;
     PatientListPresenter presenter;
+
+    private PatientAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,21 +59,17 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
 
     @Override
     public void setupLayout() {
+        ArrayList<Patient> data = new ArrayList();
+        Patient p = new Patient();
+        p.name = "P";
+        data.add(p);
+        adapter = new PatientAdapter(this, data);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.recycler.setAdapter(adapter);
+        binding.recycler.setLayoutManager(layoutManager);
     }
 
     @Override
     public void setupClickListeners() {
-        binding.patient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(PatientListActivity.this, "Patient Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-        binding.settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(PatientListActivity.this, "Settings Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

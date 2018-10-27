@@ -7,5 +7,6 @@
     <color name="textColorPrimary">@color/appLogo</color>
     <color name="appLogo">#ff008aff</color>
 
+    <color name="activity_background">#ffeeeeee</color>
     <color name="buttonLabel">#d3d3d3</color>
 </resources>
