@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "84281926386",
+    "firebase_url": "https://water-phobia-vr.firebaseio.com",
+    "project_id": "water-phobia-vr",
+    "storage_bucket": "water-phobia-vr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84281926386:android:08bc45eaf91be9d1",
+        "android_client_info": {
+          "package_name": "com.waterphobiadr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84281926386-hotjvsanofbl9s6tl5co1tg5dohhpfv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoN-Dy4_EhlB3IEoUhjTDeRv6II4BSn9g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
