@@ -1,11 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/background_material_light</item>
+        <!-- [ui_: toolbar error] -->
+        <!-- https://stackoverflow.com/a/26515159 -->
+        <item name="windowActionBar">false</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="windowNoTitle">true</item>
+        <!-- [ui_: CAB] -->
+        <!-- http://stackoverflow.com/questions/26443403/toolbar-and-contextual-actionbar-with-appcompat-v7 -->
+        <item name="windowActionModeOverlay">true</item>
+        <!-- CAB Color -->
+        <item name="actionModeBackground">@color/action_mode</item>
+        <!-- [ui_: Toolbar Text Color] -->
+        <!-- https://stackoverflow.com/a/27006348 -->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <!-- [ui_: Toolbar Button Color] -->
+        <!-- https://stackoverflow.com/a/27517878 -->
+        <item name="colorControlNormal">@color/textColorPrimary</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

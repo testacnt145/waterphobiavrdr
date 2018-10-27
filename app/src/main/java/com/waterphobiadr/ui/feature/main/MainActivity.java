@@ -1,5 +1,6 @@
 package com.waterphobiadr.ui.feature.main;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -10,6 +11,8 @@ import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
 import com.waterphobiadr.databinding.ActivityMainBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
+import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
+
 import javax.inject.Inject;
 /*
  * Created by shayan.rais on 20/12/2017.
@@ -27,7 +30,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        getWindow().setBackgroundDrawable(null);
         App.getInstance().getComponent().injectMainActivity(this);
         presenter = new MainPresenter(this, repository);
         presenter.setupIntent(getIntent());
@@ -52,7 +54,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         binding.patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Patient Clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, PatientListActivity.class);
+                startActivity(intent);
             }
         });
         binding.settings.setOnClickListener(new View.OnClickListener() {

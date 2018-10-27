@@ -5,6 +5,7 @@ import com.waterphobiadr.App;
 import com.waterphobiadr.di.Singleton;
 import com.waterphobiadr.di.module.DataSourceModule;
 import com.waterphobiadr.ui.feature.main.MainActivity;
+import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
 
 import dagger.Component;
 /*
@@ -19,4 +20,5 @@ public interface ApplicationComponent {
 
     //______________________________________________________________________________________________
     void injectMainActivity(MainActivity activity);
+    void injectPatientListActivity(PatientListActivity activity);
 }

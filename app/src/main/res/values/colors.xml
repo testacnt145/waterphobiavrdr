@@ -3,5 +3,9 @@
     <color name="colorPrimary">#f2f2f2</color>
     <color name="colorPrimaryDark">#ff008aff</color>
     <color name="colorAccent">#ff008aff</color>
+    <color name="action_mode">@color/colorPrimary</color>
+    <color name="textColorPrimary">@color/appLogo</color>
+    <color name="appLogo">#ff008aff</color>
+
     <color name="buttonLabel">#d3d3d3</color>
 </resources>

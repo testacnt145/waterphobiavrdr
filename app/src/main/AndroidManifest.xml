@@ -18,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="@string/title_patient_list"
+            android:name=".ui.feature.patientlist.PatientListActivity" />
         <activity android:name=".ui.feature.brandlist.BrandListActivity" />
         <activity android:name=".ui.feature.newbrand.NewBrandActivity" />
     </application>
