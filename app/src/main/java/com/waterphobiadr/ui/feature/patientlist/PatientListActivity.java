@@ -20,8 +20,6 @@ import com.waterphobiadr.databinding.ActivityPatientListBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.patientlist.adapter.PatientAdapter;
 import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.inject.Inject;
 /*
  * Created by shayan.rais on 20/12/2017.
@@ -37,14 +35,12 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
 
     private PatientAdapter adapter;
     private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_patient_list);
-        mFirebaseInstance = FirebaseDatabase.getInstance();
-        mFirebaseDatabase = mFirebaseInstance.getReference();
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
         App.getInstance().getComponent().injectPatientListActivity(this);
         presenter = new PatientListPresenter(this, repository);
         presenter.setupIntent(getIntent());
@@ -74,14 +70,12 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
     @Override
     public void setupLayout() {
         DatabaseReference usersRef = mFirebaseDatabase.child("users");
-        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
+        usersRef.addValueEventListener(new ValueEventListener() {
                @Override
-               public void onDataChange(DataSnapshot dataSnapshot) {
-                   for (DataSnapshot root : dataSnapshot.getChildren()) {
-                       for (DataSnapshot user : root.getChildren()) {
-                           data.add(user.getValue(Patient.class));
-                           adapter.notifyDataSetChanged();
-                       }
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   for (DataSnapshot user : dataSnapshot.getChildren()) {
+                       data.add(user.getValue(Patient.class));
+                       adapter.notifyDataSetChanged();
                    }
                }
                @Override

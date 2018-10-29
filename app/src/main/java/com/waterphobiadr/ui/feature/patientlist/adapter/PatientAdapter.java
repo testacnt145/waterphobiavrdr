@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.remote.model.Patient;
 import com.waterphobiadr.databinding.ItemPatientBinding;
@@ -66,6 +68,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
         holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });
     }
