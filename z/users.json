@@ -1,0 +1,35 @@
+{
+	"users": [{
+			"name": "Patient A",
+			"email": "a@gmail.com",
+			"contact": "03001111111",
+			"score": 10,
+			"level": 1
+
+		},
+		{
+			"name": "Patient B",
+			"email": "b@gmail.com",
+			"contact": "03002222222",
+			"score": 20,
+			"level": 2
+
+		},
+		{
+			"name": "Patient C",
+			"email": "c@gmail.com",
+			"contact": "03003333333",
+			"score": 30,
+			"level": 3
+
+		},
+		{
+			"name": "Patient D",
+			"email": "d@gmail.com",
+			"contact": "03004444444",
+			"score": 40,
+			"level": 4
+
+		}
+	]
+}

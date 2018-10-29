@@ -2,9 +2,16 @@ package com.waterphobiadr.ui.feature.patientlist;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.waterphobiadr.App;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
@@ -13,6 +20,8 @@ import com.waterphobiadr.databinding.ActivityPatientListBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.patientlist.adapter.PatientAdapter;
 import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.inject.Inject;
 /*
  * Created by shayan.rais on 20/12/2017.
@@ -27,11 +36,15 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
     PatientListPresenter presenter;
 
     private PatientAdapter adapter;
+    private DatabaseReference mFirebaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_patient_list);
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = mFirebaseInstance.getReference();
         App.getInstance().getComponent().injectPatientListActivity(this);
         presenter = new PatientListPresenter(this, repository);
         presenter.setupIntent(getIntent());
@@ -57,15 +70,29 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
             actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
+    final ArrayList<Patient> data = new ArrayList();
     @Override
     public void setupLayout() {
-        ArrayList<Patient> data = new ArrayList();
-        Patient p = new Patient();
-        p.name = "P";
-        data.add(p);
+        DatabaseReference usersRef = mFirebaseDatabase.child("users");
+        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
+               @Override
+               public void onDataChange(DataSnapshot dataSnapshot) {
+                   for (DataSnapshot root : dataSnapshot.getChildren()) {
+                       for (DataSnapshot user : root.getChildren()) {
+                           data.add(user.getValue(Patient.class));
+                           adapter.notifyDataSetChanged();
+                       }
+                   }
+               }
+               @Override
+               public void onCancelled(@NonNull DatabaseError databaseError) {
+               }
+            }
+        );
         adapter = new PatientAdapter(this, data);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.recycler.setAdapter(adapter);
+        binding.recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         binding.recycler.setLayoutManager(layoutManager);
     }
 
