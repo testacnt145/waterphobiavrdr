@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Doctor App</string>
     <string name="title_patient_list">Patient List</string>
+    <string name="title_patient_detail">Patient Detail</string>
 
     <string name="action_settings">Settings</string>
     <string name="hint_brand">Brand…</string>
