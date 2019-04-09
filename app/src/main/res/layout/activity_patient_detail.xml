@@ -23,38 +23,63 @@
                 android:id="@+id/number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:textSize="18sp" />
+                android:layout_margin="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:textSize="18sp" />
+                android:layout_margin="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Give Feedback"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:text="Feedback"
-                android:textSize="18sp" />
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:gravity="center"
+                android:text="Score List"/>
             <TextView
                 android:id="@+id/aquaphobia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:textColor="@color/colorAccent"
+                android:gravity="center"
                 android:textSize="18sp" />
             <TextView
                 android:id="@+id/astraphobia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:textColor="@color/colorAccent"
+                android:gravity="center"
                 android:textSize="18sp" />
             <TextView
                 android:id="@+id/bathophobia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:textColor="@color/colorAccent"
+                android:gravity="center"
                 android:textSize="18sp" />
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>

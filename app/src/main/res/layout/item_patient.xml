@@ -7,43 +7,29 @@
             name="patient"
             type="com.waterphobiadr.data.remote.model.Patient"/>
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:foreground="?android:attr/selectableItemBackground">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{patient.name}"
-                tools:text="Patient A"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp" />
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{patient.email}"
-                tools:text="a@gmail.com"
-                android:textSize="14sp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="8dp" />
-        </LinearLayout>
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="vertical">
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(patient.aquaphobiaScore)}"
-            tools:text="50"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_margin="8dp" />
+            android:text="@{patient.name}"
+            tools:text="Patient A"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp" />
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{patient.email}"
+            tools:text="a@gmail.com"
+            android:textSize="14sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp" />
     </LinearLayout>
 </layout>

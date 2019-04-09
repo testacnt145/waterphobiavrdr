@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         binding.settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Settings Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.about_us, Toast.LENGTH_SHORT).show();
             }
         });
     }
