@@ -3,12 +3,14 @@ package com.waterphobiadr.ui.feature.patientlist.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.waterphobiadr.R;
+import com.waterphobiadr.constant.IntentConstant;
 import com.waterphobiadr.data.remote.model.Patient;
 import com.waterphobiadr.databinding.ItemPatientBinding;
 import com.waterphobiadr.ui.feature.patientdetail.PatientDetailActivity;
@@ -64,11 +66,15 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
 
     }
 
-    private void clickListeners(MyViewHolder holder, final Patient segment) {
+    private void clickListeners(MyViewHolder holder, final Patient patient) {
         holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, PatientDetailActivity.class));
+                Intent intent = new Intent(context, PatientDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(IntentConstant.PARCELABLE_PATIENT, patient);
+                intent.putExtra(IntentConstant.BUNDLE_PATIENT, bundle);
+                context.startActivity(intent);
             }
         });
     }

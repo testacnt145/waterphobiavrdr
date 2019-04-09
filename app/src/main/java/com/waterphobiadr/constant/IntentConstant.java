@@ -7,5 +7,8 @@ public class IntentConstant {
 
     public static final String WORD = "com.example.android.wordlistsql.REPLY";
 
+    public static final String PARCELABLE_PATIENT = "parcelable_patient";
+    public static final String BUNDLE_PATIENT = "bundle_patient";
+
 
 }

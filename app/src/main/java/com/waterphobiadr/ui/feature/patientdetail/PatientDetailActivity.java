@@ -1,6 +1,8 @@
 package com.waterphobiadr.ui.feature.patientdetail;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
@@ -49,6 +51,7 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
     public void setupToolbar() {
         setSupportActionBar(binding.toolbar);
         ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(presenter.patient.getName());
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -56,20 +59,37 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
 
     @Override
     public void setupLayout() {
+        binding.number.setText("Call: " + presenter.patient.getNumber());
+        binding.email.setText("Email: " + presenter.patient.getEmail());
+        binding.aquaphobia.setText("Aquaphobia Score: " + presenter.patient.getAquaphobiaScore());
+        binding.astraphobia.setText("Astraphobia Score: " + presenter.patient.getAstraphobiaScore());
+        binding.bathophobia.setText("Bathophobia Score: " + presenter.patient.getBathophobiaScore());
     }
 
     @Override
     public void setupClickListeners() {
-        binding.call.setOnClickListener(new View.OnClickListener() {
+        binding.number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + presenter.patient.getNumber()));
+                startActivity(intent);
 
             }
         });
         binding.email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto",presenter.patient.getEmail(), null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Patient Report");
+                emailIntent.putExtra(Intent.EXTRA_TEXT,
+            "Score Details:\n" +
+                  "Aquaphobia Score: " + presenter.patient.getAquaphobiaScore() + "\n" +
+                  "Astraphobia Score: " + presenter.patient.getAstraphobiaScore() + "\n" +
+                  "Bathophobia Score: " + presenter.patient.getBathophobiaScore() + "\n\n"
+                );
+                startActivity(Intent.createChooser(emailIntent, "Send email..."));
             }
         });
         binding.feedback.setOnClickListener(new View.OnClickListener() {

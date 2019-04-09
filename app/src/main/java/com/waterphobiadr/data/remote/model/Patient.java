@@ -1,12 +1,15 @@
 package com.waterphobiadr.data.remote.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 /*
  * Created by shayan.raees on 10/25/2018.
  */
 
 @IgnoreExtraProperties
-public class Patient {
+public class Patient implements Parcelable {
 
     private String name;
     private String email;
@@ -68,4 +71,41 @@ public class Patient {
     public void setBathophobiaScore(int bathophobiaScore) {
         this.bathophobiaScore = bathophobiaScore;
     }
+
+    //______________________________________________________________________________________________
+    private Patient(Parcel in) {
+        this.name = in.readString();
+        this.email = in.readString();
+        this.number = in.readString();
+        this.aquaphobiaScore = in.readInt();
+        this.astraphobiaScore = in.readInt();
+        this.bathophobiaScore = in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int i) {
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(number);
+        dest.writeInt(aquaphobiaScore);
+        dest.writeInt(astraphobiaScore);
+        dest.writeInt(bathophobiaScore);
+    }
+
+    public static final Parcelable.Creator<Patient> CREATOR = new Parcelable.Creator<Patient>() {
+        @Override
+        public Patient createFromParcel(Parcel in) {
+            return new Patient(in);
+        }
+
+        @Override
+        public Patient[] newArray(int size) {
+            return new Patient[size];
+        }
+    };
 }
