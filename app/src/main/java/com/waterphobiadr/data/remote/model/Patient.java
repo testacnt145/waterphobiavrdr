@@ -10,9 +10,10 @@ public class Patient {
 
     private String name;
     private String email;
-    private String contact;
-    private int score;
-    private int level;
+    private String number;
+    private int aquaphobiaScore;
+    private int astraphobiaScore;
+    private int bathophobiaScore;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
@@ -36,27 +37,35 @@ public class Patient {
         this.email = email;
     }
 
-    public String getContact() {
-        return contact;
+    public String getNumber() {
+        return number;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public int getScore() {
-        return score;
+    public int getAquaphobiaScore() {
+        return aquaphobiaScore;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setAquaphobiaScore(int aquaphobiaScore) {
+        this.aquaphobiaScore = aquaphobiaScore;
     }
 
-    public int getLevel() {
-        return level;
+    public int getAstraphobiaScore() {
+        return astraphobiaScore;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setAstraphobiaScore(int astraphobiaScore) {
+        this.astraphobiaScore = astraphobiaScore;
+    }
+
+    public int getBathophobiaScore() {
+        return bathophobiaScore;
+    }
+
+    public void setBathophobiaScore(int bathophobiaScore) {
+        this.bathophobiaScore = bathophobiaScore;
     }
 }
