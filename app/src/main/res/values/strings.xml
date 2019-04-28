@@ -7,4 +7,10 @@
     <string name="about">About Us</string>
     <string name="about_us">Doctor Application\nVersion 1.0\n\nDeveloper: Shayan Rais\n\nCopyright © 2019. All rights reserved.</string>
     <string name="content_description" />
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="menu_call">Call</string>
+    <string name="menu_email">Email</string>
+    <string name="no_contacts">No contact details found</string>
+    <string name="no_emails">No email details found</string>
 </resources>

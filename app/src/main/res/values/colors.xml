@@ -8,4 +8,6 @@
     <color name="appLogo">#ff008aff</color>
 
     <color name="activity_background">#ffeeeeee</color>
+
+    <color name="overlay">#26eeeeee</color>
 </resources>
