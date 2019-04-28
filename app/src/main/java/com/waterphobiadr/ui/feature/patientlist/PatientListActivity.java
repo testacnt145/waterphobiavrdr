@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -75,6 +77,8 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                    for (DataSnapshot user : dataSnapshot.getChildren()) {
                        data.add(user.getValue(Patient.class));
+                       binding.recycler.setVisibility(View.VISIBLE);
+                       binding.layoutLoader.loading.setVisibility(View.GONE);
                        adapter.notifyDataSetChanged();
                    }
                }
