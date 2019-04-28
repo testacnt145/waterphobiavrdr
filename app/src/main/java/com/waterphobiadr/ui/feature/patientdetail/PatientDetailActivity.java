@@ -13,7 +13,6 @@ import com.waterphobiadr.App;
 import com.waterphobiadr.GlideApp;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
-import com.waterphobiadr.databinding.ActivityPatientDetail2Binding;
 import com.waterphobiadr.databinding.ActivityPatientDetailBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import javax.inject.Inject;
@@ -97,7 +96,7 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
                     .load(presenter.patient.getImage())
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .error(R.drawable.profile_placeholder)
+                    .error(R.drawable.placeholder)
                     .into(binding.image);
         }
         binding.aquaphobia.setText("Score: " + presenter.patient.getAquaphobiaScore());

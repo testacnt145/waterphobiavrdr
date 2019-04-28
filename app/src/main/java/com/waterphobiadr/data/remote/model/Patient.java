@@ -3,6 +3,8 @@ package com.waterphobiadr.data.remote.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.ArrayList;
 /*
  * Created by shayan.raees on 10/25/2018.
  */
@@ -17,6 +19,7 @@ public class Patient implements Parcelable {
     private int aquaphobiaScore;
     private int astraphobiaScore;
     private int bathophobiaScore;
+    private ArrayList<Feedback> feedbacks;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
@@ -80,6 +83,14 @@ public class Patient implements Parcelable {
         this.bathophobiaScore = bathophobiaScore;
     }
 
+    public ArrayList<Feedback> getFeedback() {
+        return feedbacks;
+    }
+
+    public void setFeedback(ArrayList<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
     //______________________________________________________________________________________________
     private Patient(Parcel in) {
         this.name = in.readString();
@@ -89,6 +100,7 @@ public class Patient implements Parcelable {
         this.aquaphobiaScore = in.readInt();
         this.astraphobiaScore = in.readInt();
         this.bathophobiaScore = in.readInt();
+        this.feedbacks = in.readArrayList((Feedback.class.getClassLoader()));
     }
 
     @Override
@@ -105,6 +117,7 @@ public class Patient implements Parcelable {
         dest.writeInt(aquaphobiaScore);
         dest.writeInt(astraphobiaScore);
         dest.writeInt(bathophobiaScore);
+        dest.writeList(feedbacks);
     }
 
     public static final Parcelable.Creator<Patient> CREATOR = new Parcelable.Creator<Patient>() {
