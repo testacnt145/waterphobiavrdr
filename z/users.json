@@ -1,35 +1,48 @@
 {
-	"users": [{
-			"name": "Patient A",
-			"email": "a@gmail.com",
-			"contact": "03001111111",
-			"score": 10,
-			"level": 1
-
-		},
-		{
-			"name": "Patient B",
-			"email": "b@gmail.com",
-			"contact": "03002222222",
-			"score": 20,
-			"level": 2
-
-		},
-		{
-			"name": "Patient C",
-			"email": "c@gmail.com",
-			"contact": "03003333333",
-			"score": 30,
-			"level": 3
-
-		},
-		{
-			"name": "Patient D",
-			"email": "d@gmail.com",
-			"contact": "03004444444",
-			"score": 40,
-			"level": 4
-
-		}
-	]
+  "users" : [ {
+    "aquaphobiaScore" : 1,
+    "astraphobiaScore" : 1,
+    "bathophobiaScore" : 1,
+    "email" : "shanraisshan@gmail.com",
+    "name" : "Shayan Rais",
+    "number" : "03352621149",
+    "image" : "https://raw.githubusercontent.com/testacnt145/waterphobiavrdr/dev/z/img/1.png",
+    "feedback" : ["1","2","3"]
+  }, {
+    "aquaphobiaScore" : 2,
+    "astraphobiaScore" : 2,
+    "bathophobiaScore" : 2,
+    "email" : "mhshahpk@gmail.com",
+    "name" : "Hassan Shah",
+    "number" : "03453134523",
+    "image" : "https://raw.githubusercontent.com/testacnt145/waterphobiavrdr/dev/z/img/2.jpg",
+    "feedback" : ["4","5"]
+  }, {
+    "aquaphobiaScore" : 3,
+    "astraphobiaScore" : 3,
+    "bathophobiaScore" : 3,
+    "email" : "rafay.saeed@gmail.com",
+    "name" : "Rafay Saeed",
+    "number" : "03332487710",
+    "image" : "https://raw.githubusercontent.com/testacnt145/waterphobiavrdr/dev/z/img/3.jpg",
+    "feedback" : ["6"]
+  }, {
+    "aquaphobiaScore" : 4,
+    "astraphobiaScore" : 4,
+    "bathophobiaScore" : 4,
+    "email" : "sarwan.jawaid@gmail.com",
+    "name" : "Sarwan Jawaid",
+    "number" : "03462729099",
+    "image" : "https://raw.githubusercontent.com/testacnt145/waterphobiavrdr/dev/z/img/4.jpg",
+    "feedback" : ["7","8"]
+  }, {
+    "aquaphobiaScore" : 5,
+    "astraphobiaScore" : 5,
+    "bathophobiaScore" : 5,
+    "email" : "aiman.rais@gmail.com",
+    "name" : "Aiman Rais",
+    "number" : "03000000000",
+    "image" : "https://raw.githubusercontent.com/testacnt145/waterphobiavrdr/dev/z/img/5.jpg",
+    "feedback" : ["9"]
+  } ]
 }
