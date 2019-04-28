@@ -2,7 +2,6 @@ package com.waterphobiadr.data.remote.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import com.google.firebase.database.IgnoreExtraProperties;
 /*
  * Created by shayan.raees on 10/25/2018.
@@ -14,6 +13,7 @@ public class Patient implements Parcelable {
     private String name;
     private String email;
     private String number;
+    private String image;
     private int aquaphobiaScore;
     private int astraphobiaScore;
     private int bathophobiaScore;
@@ -48,6 +48,14 @@ public class Patient implements Parcelable {
         this.number = number;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public int getAquaphobiaScore() {
         return aquaphobiaScore;
     }
@@ -77,6 +85,7 @@ public class Patient implements Parcelable {
         this.name = in.readString();
         this.email = in.readString();
         this.number = in.readString();
+        this.image = in.readString();
         this.aquaphobiaScore = in.readInt();
         this.astraphobiaScore = in.readInt();
         this.bathophobiaScore = in.readInt();
@@ -92,6 +101,7 @@ public class Patient implements Parcelable {
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(number);
+        dest.writeString(image);
         dest.writeInt(aquaphobiaScore);
         dest.writeInt(astraphobiaScore);
         dest.writeInt(bathophobiaScore);

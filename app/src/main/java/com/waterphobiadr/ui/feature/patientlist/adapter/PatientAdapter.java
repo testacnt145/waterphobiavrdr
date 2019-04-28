@@ -9,6 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.waterphobiadr.App;
+import com.waterphobiadr.GlideApp;
 import com.waterphobiadr.R;
 import com.waterphobiadr.constant.IntentConstant;
 import com.waterphobiadr.data.remote.model.Patient;
@@ -63,6 +67,16 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
     }
 
     private void updateUI(MyViewHolder holder, Patient item, int position) {
+        if (!item.getImage().equals("")) {
+            GlideApp
+                .with(App.getInstance())
+                .load(item.getImage())
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .circleCrop()
+                .error(R.drawable.profile_placeholder)
+                .into(holder.binding.image);
+        }
 
     }
 
