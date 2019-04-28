@@ -3,10 +3,6 @@
     <string name="title_patient_list">Patient List</string>
     <string name="title_patient_detail">Patient Detail</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="hint_brand">Brand…</string>
-    <string name="button_save">Save</string>
-    <string name="empty_not_saved">Brand not saved because it is empty.</string>
     <string name="select_patient">Select Patient</string>
     <string name="about">About Us</string>
     <string name="about_us">Doctor Application\nVersion 1.0\n\nDeveloper: Shayan Rais\n\nCopyright © 2019. All rights reserved.</string>
