@@ -39,10 +39,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     //______________________________________________________________________________________________ CREATE
     @Override
     public void setupToolbar() {
-        setSupportActionBar(binding.toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        //if (actionBar != null)
-        //    actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

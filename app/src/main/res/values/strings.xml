@@ -13,4 +13,6 @@
     <string name="menu_email">Email</string>
     <string name="no_contacts">No contact details found</string>
     <string name="no_emails">No email details found</string>
+
+    <string name="edit_profile"><u>Edit Profile</u></string>
 </resources>
