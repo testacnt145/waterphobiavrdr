@@ -4,6 +4,7 @@ package com.waterphobiadr.di.component;
 import com.waterphobiadr.App;
 import com.waterphobiadr.di.Singleton;
 import com.waterphobiadr.di.module.DataSourceModule;
+import com.waterphobiadr.ui.feature.about.AboutActivity;
 import com.waterphobiadr.ui.feature.main.MainActivity;
 import com.waterphobiadr.ui.feature.patientdetail.PatientDetailActivity;
 import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
@@ -20,6 +21,7 @@ public interface ApplicationComponent {
 
     //______________________________________________________________________________________________
     void injectMainActivity(MainActivity activity);
+    void injectAboutActivity(AboutActivity activity);
     void injectPatientListActivity(PatientListActivity activity);
     void injectPatientDetailActivity(PatientDetailActivity activity);
 }

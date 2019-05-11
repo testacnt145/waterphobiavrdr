@@ -3,16 +3,14 @@ package com.waterphobiadr.ui.feature.main;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.View;
-import android.widget.Toast;
 import com.waterphobiadr.App;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
 import com.waterphobiadr.databinding.ActivityMainBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
+import com.waterphobiadr.ui.feature.about.AboutActivity;
 import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
-
 import javax.inject.Inject;
 /*
  * Created by shayan.rais on 20/12/2017.
@@ -57,7 +55,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         binding.settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, R.string.about_us, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
             }
         });
     }
