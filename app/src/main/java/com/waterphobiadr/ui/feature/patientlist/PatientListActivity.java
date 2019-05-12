@@ -73,6 +73,7 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
         usersRef.addValueEventListener(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   data.clear();
                    for (DataSnapshot user : dataSnapshot.getChildren()) {
                        Patient patient = user.getValue(Patient.class);
                        patient.setId(user.getKey()); //basically id

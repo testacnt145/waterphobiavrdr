@@ -170,6 +170,8 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
                 if(NetworkUtil.checkInternet()) {
                     Feedback feedback = new Feedback();
                     feedback.setName(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getName());
+                    feedback.setDegree(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getDegree());
+                    feedback.setUniversity(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getUniversity());
                     feedback.setTimestamp(ConversionUtil.convertLongToString(DateUtil.getCurrentTimestamp()));
                     feedback.setComment(input.getText().toString());
                     mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback").push().setValue(feedback)

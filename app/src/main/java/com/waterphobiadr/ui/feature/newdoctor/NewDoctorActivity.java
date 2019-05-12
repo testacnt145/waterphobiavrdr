@@ -66,6 +66,7 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
                     Pref.putDoctor(JsonUtil.convertDoctorJsonToString(doctor));
                     Toast.makeText(this, "Information saved", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, MainActivity.class));
+                    finish();
                 }
                 break;
         }

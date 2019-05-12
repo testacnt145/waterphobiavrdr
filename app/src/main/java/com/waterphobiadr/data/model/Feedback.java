@@ -11,6 +11,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class Feedback implements Parcelable {
 
     private String name;
+    private String degree;
+    private String university;
     private String comment;
     private String timestamp;
 
@@ -24,6 +26,22 @@ public class Feedback implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
     }
 
     public String getComment() {
@@ -47,6 +65,8 @@ public class Feedback implements Parcelable {
     //______________________________________________________________________________________________
     private Feedback(Parcel in) {
         this.name = in.readString();
+        this.degree = in.readString();
+        this.university = in.readString();
         this.comment = in.readString();
         this.timestamp = in.readString();
     }
@@ -59,6 +79,8 @@ public class Feedback implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int i) {
         dest.writeString(name);
+        dest.writeString(degree);
+        dest.writeString(university);
         dest.writeString(comment);
         dest.writeString(timestamp);
     }
@@ -74,4 +96,6 @@ public class Feedback implements Parcelable {
             return new Feedback[size];
         }
     };
+
+
 }
