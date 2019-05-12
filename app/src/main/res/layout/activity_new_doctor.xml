@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <android.support.v7.widget.Toolbar
-                android:id="@id/toolbar"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary" />
@@ -42,6 +42,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:inputType="textCapWords"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:textSize="17sp"
@@ -67,6 +68,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:inputType="textCapWords"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:textSize="17sp"
@@ -92,6 +94,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:inputType="textCapWords"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:textSize="17sp"
@@ -117,6 +120,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:inputType="textCapWords"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:textSize="17sp"
@@ -142,6 +146,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:inputType="number"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:textSize="17sp"

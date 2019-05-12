@@ -18,6 +18,8 @@ import com.waterphobiadr.constant.IntentConstant;
 import com.waterphobiadr.data.model.Patient;
 import com.waterphobiadr.databinding.ItemPatientBinding;
 import com.waterphobiadr.ui.feature.patientdetail.PatientDetailActivity;
+import com.waterphobiadr.util.ActivityUtil;
+
 import java.util.ArrayList;
 /*
  * Created by shayan.rais on 12/12/2017.
@@ -84,11 +86,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
         holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PatientDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(IntentConstant.PARCELABLE_PATIENT, patient);
-                intent.putExtra(IntentConstant.BUNDLE_PATIENT, bundle);
-                context.startActivity(intent);
+                ActivityUtil.openPatientDetail(context, patient);
             }
         });
     }

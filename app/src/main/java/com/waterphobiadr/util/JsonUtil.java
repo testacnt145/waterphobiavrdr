@@ -6,7 +6,7 @@ import com.waterphobiadr.data.model.Doctor;
 import java.io.IOException;
 
 /*
- * Created by asad on 12/27/17.
+ * Created by shayan.rais on 12/27/17.
  */
 
 public class JsonUtil {

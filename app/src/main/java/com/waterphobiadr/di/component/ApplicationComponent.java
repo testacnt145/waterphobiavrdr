@@ -12,7 +12,7 @@ import com.waterphobiadr.ui.feature.patientdetail.PatientDetailActivity;
 import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
 import dagger.Component;
 /*
- * Created by asad on 12/11/2017.
+ * Created by shayan.rais on 12/11/2017.
  */
 
 @Singleton

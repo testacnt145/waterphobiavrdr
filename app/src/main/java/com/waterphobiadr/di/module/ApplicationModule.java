@@ -6,7 +6,7 @@ import com.waterphobiadr.di.Singleton;
 import dagger.Module;
 import dagger.Provides;
 /*
- * Created by asad on 12/9/2017.
+ * Created by shayan.rais on 12/9/2017.
  */
 
 @Module

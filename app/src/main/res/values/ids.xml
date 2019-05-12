@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="toolbar" type="id" />
-    <item name="settings" type="id" />
-    <item name="recycler" type="id" />
-    <item name="image" type="id" />
-    <item name="layout_loader" type="id" />
-    <item name="loading" type="id" />
-</resources>
