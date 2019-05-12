@@ -90,7 +90,7 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
         adapter = new PatientAdapter(this, data);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.recycler.setAdapter(adapter);
-        binding.recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        //binding.recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         binding.recycler.setLayoutManager(layoutManager);
     }
 
