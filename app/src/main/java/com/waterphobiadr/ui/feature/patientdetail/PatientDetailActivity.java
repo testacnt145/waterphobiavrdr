@@ -15,8 +15,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +33,6 @@ import com.waterphobiadr.util.ConversionUtil;
 import com.waterphobiadr.util.DateUtil;
 import com.waterphobiadr.util.JsonUtil;
 import com.waterphobiadr.util.NetworkUtil;
-
 import java.util.ArrayList;
 import javax.inject.Inject;
 /*

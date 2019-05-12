@@ -1,5 +1,6 @@
 package com.waterphobiadr.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import com.waterphobiadr.constant.IntentConstant;
 import com.waterphobiadr.data.model.Doctor;
 import com.waterphobiadr.data.model.Patient;
 import com.waterphobiadr.ui.feature.about.AboutActivity;
+import com.waterphobiadr.ui.feature.main.MainActivity;
 import com.waterphobiadr.ui.feature.newdoctor.NewDoctorActivity;
 import com.waterphobiadr.ui.feature.patientdetail.PatientDetailActivity;
 import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
@@ -22,7 +24,12 @@ import java.io.IOException;
 
 public class ActivityUtil {
 
+    public static void openHome(Context ctx) {
+        ctx.startActivity(new Intent(ctx, MainActivity.class));
+    }
+
     public static void openNewDoctor(Context ctx, Doctor doctor) {
+        ((Activity)ctx).finish();
         Intent intent = new Intent(ctx, NewDoctorActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(IntentConstant.PARCELABLE_DOCTOR, doctor);

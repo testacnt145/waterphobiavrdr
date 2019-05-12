@@ -16,6 +16,7 @@ import com.waterphobiadr.data.model.Doctor;
 import com.waterphobiadr.databinding.ActivityNewDoctorBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.main.MainActivity;
+import com.waterphobiadr.util.ActivityUtil;
 import com.waterphobiadr.util.JsonUtil;
 import javax.inject.Inject;
 /*
@@ -46,9 +47,17 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityUtil.openHome(this);
+        finish();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                ActivityUtil.openHome(this);
                 finish();
                 break;
             case R.id.menu_save:
@@ -65,7 +74,7 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
                     doctor.setNumber(binding.number.getText().toString());
                     Pref.putDoctor(JsonUtil.convertDoctorJsonToString(doctor));
                     Toast.makeText(this, "Information saved", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, MainActivity.class));
+                    ActivityUtil.openHome(this);
                     finish();
                 }
                 break;
