@@ -61,7 +61,7 @@ public class PatientDetailAdapter extends RecyclerView.Adapter<PatientDetailAdap
 
     private void updateUI(MyViewHolder holder, Feedback item, int position) {
         holder.binding.comment.setText(item.getComment());
-        holder.binding.name.setText(item.getName() + " (" + item.getDegree() + "-" + item.getUniversity() + ")");
+        holder.binding.name.setText(item.getName() + " (" + item.getDegree() + " - " + item.getUniversity() + ")");
         holder.binding.time.setText(DateUtil.getDate(ConversionUtil.convertStringToLong(item.getTimestamp())));
     }
 

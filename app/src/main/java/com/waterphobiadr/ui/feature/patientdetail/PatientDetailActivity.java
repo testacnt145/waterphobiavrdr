@@ -166,22 +166,26 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
             input.setLayoutParams(lp);
             input.setHint("comment here");
             alertDialog.setView(input);
+            alertDialog.setCancelable(false);
             alertDialog.setPositiveButton("Comment", (dialog, which) -> {
-                if(NetworkUtil.checkInternet()) {
-                    Feedback feedback = new Feedback();
-                    feedback.setName(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getName());
-                    feedback.setDegree(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getDegree());
-                    feedback.setUniversity(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getUniversity());
-                    feedback.setTimestamp(ConversionUtil.convertLongToString(DateUtil.getCurrentTimestamp()));
-                    feedback.setComment(input.getText().toString());
-                    mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback").push().setValue(feedback)
-                        .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(PatientDetailActivity.this, "Comment posted", Toast.LENGTH_SHORT).show();
-                        })
-                        .addOnFailureListener(e -> Toast.makeText(PatientDetailActivity.this, "Request Failed", Toast.LENGTH_SHORT).show());
+                if(!input.getText().toString().equals("")) {
+                    if (NetworkUtil.checkInternet()) {
+                        Feedback feedback = new Feedback();
+                        feedback.setName(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getName());
+                        feedback.setDegree(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getDegree());
+                        feedback.setUniversity(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getUniversity());
+                        feedback.setTimestamp(ConversionUtil.convertLongToString(DateUtil.getCurrentTimestamp()));
+                        feedback.setComment(input.getText().toString());
+                        mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback").push().setValue(feedback)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(PatientDetailActivity.this, "Comment posted", Toast.LENGTH_SHORT).show();
+                                })
+                                .addOnFailureListener(e -> Toast.makeText(PatientDetailActivity.this, "Request Failed", Toast.LENGTH_SHORT).show());
 
+                    } else
+                        Toast.makeText(PatientDetailActivity.this, getString(R.string.network_not_connected), Toast.LENGTH_SHORT).show();
                 } else
-                    Toast.makeText(PatientDetailActivity.this, getString(R.string.network_not_connected), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PatientDetailActivity.this, "Please write comment", Toast.LENGTH_SHORT).show();
             });
             alertDialog.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             alertDialog.show();
