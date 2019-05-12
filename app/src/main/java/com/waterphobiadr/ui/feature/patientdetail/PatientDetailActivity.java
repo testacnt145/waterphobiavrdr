@@ -6,12 +6,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,10 +26,16 @@ import com.waterphobiadr.App;
 import com.waterphobiadr.GlideApp;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
+import com.waterphobiadr.data.local.pref.Pref;
 import com.waterphobiadr.data.model.Feedback;
 import com.waterphobiadr.databinding.ActivityPatientDetailBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.patientdetail.adapter.PatientDetailAdapter;
+import com.waterphobiadr.util.ConversionUtil;
+import com.waterphobiadr.util.DateUtil;
+import com.waterphobiadr.util.JsonUtil;
+import com.waterphobiadr.util.NetworkUtil;
+
 import java.util.ArrayList;
 import javax.inject.Inject;
 /*
@@ -124,6 +135,7 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
         feedbackRef.addValueEventListener(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   data.clear();//clear all because it will also be called when new comment is added
                    for (DataSnapshot feedback : dataSnapshot.getChildren()) {
                        data.add(feedback.getValue(Feedback.class));
                        binding.recycler.setVisibility(View.VISIBLE);
@@ -145,5 +157,32 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
 
     @Override
     public void setupClickListeners() {
+        binding.fab.setOnClickListener(v -> {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Doctor Comment");
+            alertDialog.setMessage(DateUtil.getCurrentDate());
+            final EditText input = new EditText(this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            input.setLayoutParams(lp);
+            input.setHint("comment here");
+            alertDialog.setView(input);
+            alertDialog.setPositiveButton("Comment", (dialog, which) -> {
+                if(NetworkUtil.checkInternet()) {
+                    Feedback feedback = new Feedback();
+                    feedback.setName(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getName());
+                    feedback.setTimestamp(ConversionUtil.convertLongToString(DateUtil.getCurrentTimestamp()));
+                    feedback.setComment(input.getText().toString());
+                    mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback").push().setValue(feedback)
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(PatientDetailActivity.this, "Comment posted", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> Toast.makeText(PatientDetailActivity.this, "Request Failed", Toast.LENGTH_SHORT).show());
+
+                } else
+                    Toast.makeText(PatientDetailActivity.this, getString(R.string.network_not_connected), Toast.LENGTH_SHORT).show();
+            });
+            alertDialog.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+            alertDialog.show();
+        });
     }
 }
