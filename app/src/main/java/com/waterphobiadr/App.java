@@ -7,14 +7,9 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
-import android.util.Log;
-import com.google.firebase.database.logging.LogWrapper;
 import com.waterphobiadr.di.component.ApplicationComponent;
 import com.waterphobiadr.di.component.DaggerApplicationComponent;
 import com.waterphobiadr.di.module.ApplicationModule;
-import timber.log.Timber;
-
-import static com.waterphobiadr.BuildConfig.DEBUG;
 
 public class App extends MultiDexApplication {
 
@@ -41,12 +36,6 @@ public class App extends MultiDexApplication {
         component = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
-
-
-
-        if (DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
     }
 
     @Override

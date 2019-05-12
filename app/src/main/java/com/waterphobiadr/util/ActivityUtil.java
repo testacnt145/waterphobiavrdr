@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.squareup.moshi.JsonAdapter;
-import com.squareup.moshi.Moshi;
 import com.waterphobiadr.constant.IntentConstant;
 import com.waterphobiadr.data.model.Doctor;
 import com.waterphobiadr.data.model.Patient;

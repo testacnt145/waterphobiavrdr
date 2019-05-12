@@ -123,9 +123,9 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
                     .error(R.drawable.placeholder)
                     .into(binding.image);
         }
-        binding.aquaphobia.setText("Score: " + presenter.patient.getAquaphobiaScore());
-        binding.astraphobia.setText("Score: " + presenter.patient.getAstraphobiaScore());
-        binding.bathophobia.setText("Score: " + presenter.patient.getBathophobiaScore());
+        binding.aquaphobia.setText("Aquaphobia Score: " + presenter.patient.getAquaphobiaScore());
+        binding.astraphobia.setText("Astraphobia Score: " + presenter.patient.getAstraphobiaScore());
+        binding.bathophobia.setText("Bathophobia Score: " + presenter.patient.getBathophobiaScore());
 
         //feedback
         DatabaseReference feedbackRef = mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback");
