@@ -7,4 +7,6 @@
     <item name="image" type="id" />
     <item name="layout_loader" type="id" />
     <item name="loading" type="id" />
+    <item name="doctor" type="id" />
+    <item name="edit" type="id" />
 </resources>

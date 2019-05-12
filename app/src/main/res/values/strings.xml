@@ -2,6 +2,7 @@
     <string name="app_name">Doctor App</string>
     <string name="title_about"/>
     <string name="title_patient_list">Patient List</string>
+    <string name="title_doctor_list">Select Doctor</string>
     <string name="title_patient_detail">Patient Detail</string>
 
     <string name="select_patient">Select Patient</string>
