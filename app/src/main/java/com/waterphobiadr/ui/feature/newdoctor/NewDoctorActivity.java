@@ -16,6 +16,7 @@ import com.waterphobiadr.data.model.Doctor;
 import com.waterphobiadr.databinding.ActivityNewDoctorBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.main.MainActivity;
+import com.waterphobiadr.util.JsonUtil;
 
 import javax.inject.Inject;
 /*
@@ -62,6 +63,7 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
                         doctor.setUniversity(binding.university.getText().toString());
                         doctor.setEmail(binding.email.getText().toString());
                         doctor.setNumber(binding.number.getText().toString());
+                        Pref.putDoctor(JsonUtil.convertDoctorJsonToString(doctor));
                         startActivity(new Intent(this, MainActivity.class));
                     }
                 }
