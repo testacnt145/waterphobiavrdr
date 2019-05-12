@@ -13,6 +13,7 @@
     <color name="darker_gray">#363636</color>
     <color name="light_gray">#efefef</color>
     <color name="orange">#fff58220</color>
+    <color name="red">#ffff0000</color>
 
     <color name="activity_background">#ffeeeeee</color>
 

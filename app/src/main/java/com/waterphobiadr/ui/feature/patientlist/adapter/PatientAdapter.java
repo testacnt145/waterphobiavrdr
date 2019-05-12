@@ -15,7 +15,7 @@ import com.waterphobiadr.App;
 import com.waterphobiadr.GlideApp;
 import com.waterphobiadr.R;
 import com.waterphobiadr.constant.IntentConstant;
-import com.waterphobiadr.data.remote.model.Patient;
+import com.waterphobiadr.data.model.Patient;
 import com.waterphobiadr.databinding.ItemPatientBinding;
 import com.waterphobiadr.ui.feature.patientdetail.PatientDetailActivity;
 import java.util.ArrayList;

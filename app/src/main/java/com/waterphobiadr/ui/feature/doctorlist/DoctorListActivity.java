@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.waterphobiadr.App;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
-import com.waterphobiadr.data.remote.model.Patient;
+import com.waterphobiadr.data.model.Patient;
 import com.waterphobiadr.databinding.ActivityDoctorListBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.doctorlist.adapter.DoctorAdapter;

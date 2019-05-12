@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.waterphobiadr.constant.IntentConstant;
 import com.waterphobiadr.data.Repository;
-import com.waterphobiadr.data.remote.model.Patient;
+import com.waterphobiadr.data.model.Patient;
 /*
  * Created by shayan.rais on 20/12/2017.
  */

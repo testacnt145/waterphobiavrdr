@@ -1,4 +1,4 @@
-package com.waterphobiadr.data.remote.model;
+package com.waterphobiadr.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

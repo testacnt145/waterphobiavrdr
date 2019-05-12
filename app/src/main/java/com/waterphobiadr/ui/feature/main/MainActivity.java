@@ -7,6 +7,7 @@ import android.view.View;
 import com.waterphobiadr.App;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
+import com.waterphobiadr.data.local.pref.Pref;
 import com.waterphobiadr.databinding.ActivityMainBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.about.AboutActivity;
@@ -33,6 +34,11 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         App.getInstance().getComponent().injectMainActivity(this);
         presenter = new MainPresenter(this, repository);
         presenter.setupIntent(getIntent());
+
+        if(!Pref.getIsAtLeastOneDoctor()) {
+            startActivity(new Intent(this, NewDoctorActivity.class));
+            finish();
+        }
     }
 
 

@@ -38,6 +38,7 @@
                         android:textStyle="bold"
                         android:text="Doctor Name:"/>
                     <EditText
+                        android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -62,6 +63,7 @@
                         android:textStyle="bold"
                         android:text="Degree:"/>
                     <EditText
+                        android:id="@+id/degree"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -86,6 +88,7 @@
                         android:textStyle="bold"
                         android:text="University:"/>
                     <EditText
+                        android:id="@+id/university"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -110,6 +113,7 @@
                         android:textStyle="bold"
                         android:text="Email:"/>
                     <EditText
+                        android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -134,6 +138,7 @@
                         android:textStyle="bold"
                         android:text="Phone:"/>
                     <EditText
+                        android:id="@+id/number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"

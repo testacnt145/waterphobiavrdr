@@ -5,7 +5,7 @@
     <data>
         <variable
             name="patient"
-            type="com.waterphobiadr.data.remote.model.Patient"/>
+            type="com.waterphobiadr.data.model.Patient"/>
     </data>
 
     <LinearLayout
