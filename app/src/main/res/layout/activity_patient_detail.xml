@@ -131,7 +131,14 @@
                         android:layout_height="match_parent" />
                     <include
                         android:id="@+id/layout_loader"
-                        layout="@layout/layout_loader" />
+                        layout="@layout/layout_loader"
+                        android:visibility="gone"/>
+                    <TextView
+                        android:id="@+id/no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="No comments"/>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -144,7 +151,7 @@
             android:layout_margin="@dimen/fab_margin"
             app:layout_anchor="@id/app_bar"
             app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@android:drawable/ic_menu_add" />
+            app:srcCompat="@drawable/menu_add" />
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>

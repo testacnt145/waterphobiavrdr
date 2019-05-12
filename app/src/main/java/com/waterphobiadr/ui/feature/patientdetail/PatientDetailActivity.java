@@ -4,17 +4,28 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.waterphobiadr.App;
 import com.waterphobiadr.GlideApp;
 import com.waterphobiadr.R;
 import com.waterphobiadr.data.Repository;
+import com.waterphobiadr.data.model.Feedback;
 import com.waterphobiadr.databinding.ActivityPatientDetailBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
+import com.waterphobiadr.ui.feature.patientdetail.adapter.PatientDetailAdapter;
+import java.util.ArrayList;
 import javax.inject.Inject;
 /*
  * Created by shayan.rais on 20/12/2017.
@@ -28,10 +39,15 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
     Repository repository;
     PatientDetailPresenter presenter;
 
+    private PatientDetailAdapter adapter;
+    final ArrayList<Feedback> data = new ArrayList();
+    private DatabaseReference mFirebaseDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_patient_detail);
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
         App.getInstance().getComponent().injectPatientDetailActivity(this);
         presenter = new PatientDetailPresenter(this, repository);
         presenter.setupIntent(getIntent());
@@ -102,6 +118,29 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
         binding.aquaphobia.setText("Score: " + presenter.patient.getAquaphobiaScore());
         binding.astraphobia.setText("Score: " + presenter.patient.getAstraphobiaScore());
         binding.bathophobia.setText("Score: " + presenter.patient.getBathophobiaScore());
+
+        //feedback
+        DatabaseReference feedbackRef = mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback");
+        feedbackRef.addValueEventListener(new ValueEventListener() {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   for (DataSnapshot feedback : dataSnapshot.getChildren()) {
+                       data.add(feedback.getValue(Feedback.class));
+                       binding.recycler.setVisibility(View.VISIBLE);
+                       binding.no.setVisibility(View.GONE);
+                       binding.layoutLoader.loading.setVisibility(View.GONE);
+                       adapter.notifyDataSetChanged();
+                   }
+               }
+               @Override
+               public void onCancelled(@NonNull DatabaseError databaseError) {
+               }
+           }
+        );
+        adapter = new PatientDetailAdapter(this, data);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.recycler.setAdapter(adapter);
+        binding.recycler.setLayoutManager(layoutManager);
     }
 
     @Override

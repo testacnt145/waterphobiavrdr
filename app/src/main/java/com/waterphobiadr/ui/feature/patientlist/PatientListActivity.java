@@ -4,11 +4,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +35,7 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
 
     private PatientAdapter adapter;
     private DatabaseReference mFirebaseDatabase;
+    final ArrayList<Patient> data = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +67,6 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
             actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    final ArrayList<Patient> data = new ArrayList();
     @Override
     public void setupLayout() {
         DatabaseReference usersRef = mFirebaseDatabase.child("users");
@@ -76,7 +74,9 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                    for (DataSnapshot user : dataSnapshot.getChildren()) {
-                       data.add(user.getValue(Patient.class));
+                       Patient patient = user.getValue(Patient.class);
+                       patient.setId(user.getKey()); //basically id
+                       data.add(patient);
                        binding.recycler.setVisibility(View.VISIBLE);
                        binding.layoutLoader.loading.setVisibility(View.GONE);
                        adapter.notifyDataSetChanged();
@@ -90,7 +90,6 @@ public class PatientListActivity extends BaseActivity implements PatientListCont
         adapter = new PatientAdapter(this, data);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.recycler.setAdapter(adapter);
-        //binding.recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         binding.recycler.setLayoutManager(layoutManager);
     }
 

@@ -83,12 +83,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
     }
 
     private void clickListeners(MyViewHolder holder, final Patient patient) {
-        holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ActivityUtil.openPatientDetail(context, patient);
-            }
-        });
+        holder.binding.getRoot().setOnClickListener(view -> ActivityUtil.openPatientDetail(context, patient));
     }
 
     //______________________________________________________________________________________________

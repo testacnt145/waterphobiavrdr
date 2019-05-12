@@ -20,6 +20,8 @@ public class Patient implements Parcelable {
     private int astraphobiaScore;
     private int bathophobiaScore;
     private ArrayList<Feedback> feedbacks;
+    //___________________________________
+    private String id;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
@@ -91,6 +93,13 @@ public class Patient implements Parcelable {
         this.feedbacks = feedbacks;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     //______________________________________________________________________________________________
     private Patient(Parcel in) {
         this.name = in.readString();
@@ -101,6 +110,8 @@ public class Patient implements Parcelable {
         this.astraphobiaScore = in.readInt();
         this.bathophobiaScore = in.readInt();
         this.feedbacks = in.readArrayList((Feedback.class.getClassLoader()));
+        //__
+        this.id = in.readString();
     }
 
     @Override
@@ -118,6 +129,8 @@ public class Patient implements Parcelable {
         dest.writeInt(astraphobiaScore);
         dest.writeInt(bathophobiaScore);
         dest.writeList(feedbacks);
+        //___
+        dest.writeString(id);
     }
 
     public static final Parcelable.Creator<Patient> CREATOR = new Parcelable.Creator<Patient>() {

@@ -53,19 +53,19 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
                 break;
             case R.id.menu_save:
                 if(validate()) {
-                    //if (!Pref.getIsAtLeastOneDoctor()) {
-                        //Pref.putIsAtLeastOneDoctor(true);
-                        Doctor doctor = new Doctor();
-                        doctor.setId(1);
-                        doctor.setName(binding.name.getText().toString());
-                        doctor.setDegree(binding.degree.getText().toString());
-                        doctor.setUniversity(binding.university.getText().toString());
-                        doctor.setEmail(binding.email.getText().toString());
-                        doctor.setNumber(binding.number.getText().toString());
-                        Pref.putDoctor(JsonUtil.convertDoctorJsonToString(doctor));
-                        Toast.makeText(this, "Information saved", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, MainActivity.class));
-                    //}
+                    if (!Pref.getIsAtLeastOneDoctor()) {
+                        Pref.putIsAtLeastOneDoctor(true);
+                    }
+                    Doctor doctor = new Doctor();
+                    doctor.setId(1);
+                    doctor.setName(binding.name.getText().toString());
+                    doctor.setDegree(binding.degree.getText().toString());
+                    doctor.setUniversity(binding.university.getText().toString());
+                    doctor.setEmail(binding.email.getText().toString());
+                    doctor.setNumber(binding.number.getText().toString());
+                    Pref.putDoctor(JsonUtil.convertDoctorJsonToString(doctor));
+                    Toast.makeText(this, "Information saved", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, MainActivity.class));
                 }
                 break;
         }
