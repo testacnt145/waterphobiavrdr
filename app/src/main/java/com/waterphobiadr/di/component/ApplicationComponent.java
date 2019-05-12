@@ -7,6 +7,7 @@ import com.waterphobiadr.di.module.DataSourceModule;
 import com.waterphobiadr.ui.feature.about.AboutActivity;
 import com.waterphobiadr.ui.feature.doctorlist.DoctorListActivity;
 import com.waterphobiadr.ui.feature.main.MainActivity;
+import com.waterphobiadr.ui.feature.newdoctor.NewDoctorActivity;
 import com.waterphobiadr.ui.feature.patientdetail.PatientDetailActivity;
 import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
 import dagger.Component;
@@ -22,6 +23,7 @@ public interface ApplicationComponent {
 
     //______________________________________________________________________________________________
     void injectMainActivity(MainActivity activity);
+    void injectNewDoctorActivity(NewDoctorActivity activity);
     void injectAboutActivity(AboutActivity activity);
     void injectPatientListActivity(PatientListActivity activity);
     void injectDoctorListActivity(DoctorListActivity activity);

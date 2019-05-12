@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Doctor App</string>
     <string name="title_about"/>
+    <string name="title_new_doctor">Doctor Info</string>
     <string name="title_patient_list">Patient List</string>
     <string name="title_doctor_list">Select Doctor</string>
     <string name="title_patient_detail">Patient Detail</string>
@@ -12,6 +13,7 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
     <string name="menu_call">Call</string>
+    <string name="menu_save">Save</string>
     <string name="menu_email">Email</string>
     <string name="no_contacts">No contact details found</string>
     <string name="no_emails">No email details found</string>

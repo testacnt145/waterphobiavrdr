@@ -11,6 +11,7 @@ import com.waterphobiadr.databinding.ActivityMainBinding;
 import com.waterphobiadr.ui.base.BaseActivity;
 import com.waterphobiadr.ui.feature.about.AboutActivity;
 import com.waterphobiadr.ui.feature.doctorlist.DoctorListActivity;
+import com.waterphobiadr.ui.feature.newdoctor.NewDoctorActivity;
 import com.waterphobiadr.ui.feature.patientlist.PatientListActivity;
 import javax.inject.Inject;
 /*
@@ -70,7 +71,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         binding.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DoctorListActivity.class);
+                Intent intent = new Intent(MainActivity.this, NewDoctorActivity.class);
                 startActivity(intent);
             }
         });

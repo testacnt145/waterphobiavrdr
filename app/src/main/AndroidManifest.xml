@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.feature.newdoctor.NewDoctorActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_new_doctor" />
+        <activity
             android:name=".ui.feature.about.AboutActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_about" />
