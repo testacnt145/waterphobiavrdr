@@ -49,13 +49,13 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
 
     private PatientDetailAdapter adapter;
     final ArrayList<Feedback> data = new ArrayList();
-    private DatabaseReference mFirebaseDatabase;
+    private DatabaseReference db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_patient_detail);
-        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        db = FirebaseDatabase.getInstance().getReference();
         App.getInstance().getComponent().injectPatientDetailActivity(this);
         presenter = new PatientDetailPresenter(this, repository);
         presenter.setupIntent(getIntent());
@@ -128,7 +128,7 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
         binding.bathophobia.setText("Bathophobia Score: " + presenter.patient.getBathophobiaScore());
 
         //feedback
-        DatabaseReference feedbackRef = mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback");
+        DatabaseReference feedbackRef = db.child("users").child(presenter.patient.getId()).child("feedback");
         feedbackRef.addValueEventListener(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -173,7 +173,10 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
                         feedback.setUniversity(JsonUtil.convertDoctorStringToJson(Pref.getDoctor()).getUniversity());
                         feedback.setTimestamp(ConversionUtil.convertLongToString(DateUtil.getCurrentTimestamp()));
                         feedback.setComment(input.getText().toString());
-                        mFirebaseDatabase.child("users").child(presenter.patient.getId()).child("feedback").push().setValue(feedback)
+                        //add new feedback to list
+                        data.add(feedback);
+                        //old HashMap -> db.child("users").child(presenter.patient.getId()).child("feedback").push().setValue(feedback)
+                        db.child("users").child(presenter.patient.getId()).child("feedback").setValue(data)
                                 .addOnSuccessListener(aVoid -> {
                                     Toast.makeText(PatientDetailActivity.this, "Comment posted", Toast.LENGTH_SHORT).show();
                                 })

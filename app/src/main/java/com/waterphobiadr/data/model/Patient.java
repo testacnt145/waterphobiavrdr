@@ -3,7 +3,7 @@ package com.waterphobiadr.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.firebase.database.IgnoreExtraProperties;
-import java.util.HashMap;
+import java.util.ArrayList;
 /*
  * Created by shayan.raees on 10/25/2018.
  */
@@ -18,7 +18,7 @@ public class Patient implements Parcelable {
     private int aquaphobiaScore;
     private int astraphobiaScore;
     private int bathophobiaScore;
-    private HashMap<String, Feedback> feedbacks;
+    private ArrayList<Feedback> feedbacks;
     //___________________________________
     private String id;
 
@@ -84,11 +84,11 @@ public class Patient implements Parcelable {
         this.bathophobiaScore = bathophobiaScore;
     }
 
-    public HashMap<String, Feedback> getFeedback() {
+    public ArrayList<Feedback> getFeedback() {
         return feedbacks;
     }
 
-    public void setFeedback(HashMap<String, Feedback> feedbacks) {
+    public void setFeedback(ArrayList<Feedback> feedbacks) {
         this.feedbacks = feedbacks;
     }
 
@@ -108,7 +108,7 @@ public class Patient implements Parcelable {
         this.aquaphobiaScore = in.readInt();
         this.astraphobiaScore = in.readInt();
         this.bathophobiaScore = in.readInt();
-        this.feedbacks = in.readHashMap((Feedback.class.getClassLoader()));
+        this.feedbacks = in.readArrayList(Feedback.class.getClassLoader());
         //__
         this.id = in.readString();
     }
@@ -127,7 +127,7 @@ public class Patient implements Parcelable {
         dest.writeInt(aquaphobiaScore);
         dest.writeInt(astraphobiaScore);
         dest.writeInt(bathophobiaScore);
-        dest.writeMap(feedbacks);
+        dest.writeList(feedbacks);
         //___
         dest.writeString(id);
     }
