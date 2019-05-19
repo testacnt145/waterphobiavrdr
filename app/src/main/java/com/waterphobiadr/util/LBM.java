@@ -2,8 +2,8 @@ package com.waterphobiadr.util;
 
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
-import com.savyour.App;
-import com.savyour.constant.IntentConstant;
+import com.waterphobiadr.App;
+import com.waterphobiadr.constant.IntentConstant;
 /*
  * Created by shayan.raees on 8/9/2018.
  */
