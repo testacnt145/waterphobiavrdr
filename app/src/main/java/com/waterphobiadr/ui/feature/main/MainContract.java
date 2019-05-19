@@ -13,6 +13,7 @@ public class MainContract {
         void setupToolbar();
         void setupLayout();
         void setupClickListeners();
+        void updateDoctor();
     }
 
     public interface Presenter extends BasePresenter {

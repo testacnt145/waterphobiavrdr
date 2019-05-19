@@ -13,4 +13,6 @@ public class IntentConstant {
     public static final String PARCELABLE_DOCTOR = "parcelable_doctor";
     public static final String BUNDLE_DOCTOR = "bundle_doctor";
 
+    public static final String LBM_DOCTOR_UPDATED = "lbm_doctor_updated";
+
 }

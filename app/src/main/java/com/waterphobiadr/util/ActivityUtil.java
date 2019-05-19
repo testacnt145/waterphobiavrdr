@@ -26,7 +26,6 @@ public class ActivityUtil {
     }
 
     public static void openNewDoctor(Context ctx, Doctor doctor) {
-        ((Activity)ctx).finish();
         Intent intent = new Intent(ctx, NewDoctorActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(IntentConstant.PARCELABLE_DOCTOR, doctor);
