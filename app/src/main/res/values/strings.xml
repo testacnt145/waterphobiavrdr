@@ -8,7 +8,6 @@
 
     <string name="select_patient">Select Patient</string>
     <string name="about">About Us</string>
-    <string name="about_us">Doctor Application\nVersion 1.0\n\nDeveloper: Shayan Rais\n\nCopyright © 2019. All rights reserved.</string>
     <string name="content_description" />
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
