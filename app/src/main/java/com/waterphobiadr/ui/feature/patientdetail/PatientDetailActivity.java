@@ -128,7 +128,7 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
         binding.bathophobia.setText("Bathophobia Score: " + presenter.patient.getBathophobiaScore());
 
         //feedback
-        DatabaseReference feedbackRef = db.child("users").child(presenter.patient.getId()).child("feedback");
+        DatabaseReference feedbackRef = db.child("users").child(presenter.patient.getId()).child("feedbacks");
         feedbackRef.addValueEventListener(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -175,8 +175,8 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
                         feedback.setComment(input.getText().toString());
                         //add new feedback to list
                         data.add(feedback);
-                        //old HashMap -> db.child("users").child(presenter.patient.getId()).child("feedback").push().setValue(feedback)
-                        db.child("users").child(presenter.patient.getId()).child("feedback").setValue(data)
+                        //old HashMap -> db.child("users").child(presenter.patient.getId()).child("feedbacks").push().setValue(feedback)
+                        db.child("users").child(presenter.patient.getId()).child("feedbacks").setValue(data)
                                 .addOnSuccessListener(aVoid -> {
                                     Toast.makeText(PatientDetailActivity.this, "Comment posted", Toast.LENGTH_SHORT).show();
                                 })
