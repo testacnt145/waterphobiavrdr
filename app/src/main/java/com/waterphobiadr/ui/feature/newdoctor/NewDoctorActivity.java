@@ -67,10 +67,11 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
                     Pref.putDoctor(JsonUtil.convertDoctorJsonToString(doctor));
                     Toast.makeText(this, "Information saved", Toast.LENGTH_SHORT).show();
                     LBM.doctorUpdated();
-                    if (!Pref.getIsAtLeastOneDoctor())
+                    if (!Pref.getIsAtLeastOneDoctor()) {
                         Pref.putIsAtLeastOneDoctor(true);
-                    else
-                        finish();
+                        ActivityUtil.openHome(this);
+                    }
+                    finish();
                 }
                 break;
         }
