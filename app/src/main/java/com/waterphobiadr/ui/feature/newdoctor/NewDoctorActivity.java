@@ -56,9 +56,7 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
                 break;
             case R.id.menu_save:
                 if(validate()) {
-                    if (!Pref.getIsAtLeastOneDoctor()) {
-                        Pref.putIsAtLeastOneDoctor(true);
-                    }
+
                     Doctor doctor = new Doctor();
                     doctor.setId(1);
                     doctor.setName(binding.name.getText().toString());
@@ -69,7 +67,10 @@ public class NewDoctorActivity extends BaseActivity implements NewDoctorContract
                     Pref.putDoctor(JsonUtil.convertDoctorJsonToString(doctor));
                     Toast.makeText(this, "Information saved", Toast.LENGTH_SHORT).show();
                     LBM.doctorUpdated();
-                    finish();
+                    if (!Pref.getIsAtLeastOneDoctor())
+                        Pref.putIsAtLeastOneDoctor(true);
+                    else
+                        finish();
                 }
                 break;
         }
