@@ -20,6 +20,7 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
+                android:gravity="center"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -29,42 +30,37 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:textColor="@color/white"
-                    android:text="Doctor Application"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="italic"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textColor="@color/white"
-                    android:text="Version 1.0 (3)"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textColor="@color/white"
-                    android:text="Shayan Rais (K153045)"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="italic"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textColor="@color/white"
-                    android:text="MS Project - FAST University"/>
+                    android:text="Verification"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:maxLines="1"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:gravity="center"
                     android:ellipsize="end"
                     android:textColor="@color/white"
-                    android:text="Copyright © 2019. All rights reserved."/>
+                    android:text="Please enter 5 digit code to proceed\n
+with the application."/>
+                <EditText
+                    android:id="@+id/editext"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:maxLength="5"
+                    android:inputType="number"
+                    android:textSize="30sp"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/white"
+                    android:paddingTop="4dp"
+                    android:background="#2f000000"
+                    android:hint="code">
+                    <requestFocus />
+                </EditText>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

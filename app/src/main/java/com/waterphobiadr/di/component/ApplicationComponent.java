@@ -5,6 +5,7 @@ import com.waterphobiadr.App;
 import com.waterphobiadr.di.Singleton;
 import com.waterphobiadr.di.module.DataSourceModule;
 import com.waterphobiadr.ui.feature.about.AboutActivity;
+import com.waterphobiadr.ui.feature.code.CodeActivity;
 import com.waterphobiadr.ui.feature.doctorlist.DoctorListActivity;
 import com.waterphobiadr.ui.feature.main.MainActivity;
 import com.waterphobiadr.ui.feature.newdoctor.NewDoctorActivity;
@@ -22,6 +23,7 @@ public interface ApplicationComponent {
     void inject(App app);
 
     //______________________________________________________________________________________________
+    void injectCodeActivity(CodeActivity activity);
     void injectMainActivity(MainActivity activity);
     void injectNewDoctorActivity(NewDoctorActivity activity);
     void injectAboutActivity(AboutActivity activity);

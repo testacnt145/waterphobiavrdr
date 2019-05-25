@@ -125,6 +125,13 @@ public final class Pref {
 	}
 
 	//++++++++++++++++++++++ ENCRYPTED PREFERENCES START (1)++++++++++++++++++++++++++++++++++++++++
+	public static boolean getIsCodeVerified() {
+		return Pref.getBooleanPref(PKey.IS_CODE_VERIFIED, PDefaultValue.IS_CODE_VERIFIED);
+	}
+
+	public static void putIsCodeVerified(boolean value) {
+		Pref.putBooleanPref(PKey.IS_CODE_VERIFIED, value);
+	}
 
 	public static boolean getIsAtLeastOneDoctor() {
 		return Pref.getBooleanPref(PKey.IS_AT_LEAST_ONE_DOCTOR, PDefaultValue.IS_AT_LEAST_ONE_DOCTOR);
