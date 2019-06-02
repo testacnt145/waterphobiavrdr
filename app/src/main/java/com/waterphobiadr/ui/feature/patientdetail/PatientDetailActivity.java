@@ -1,18 +1,26 @@
 package com.waterphobiadr.ui.feature.patientdetail;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.database.DataSnapshot;
@@ -155,16 +163,25 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
     @Override
     public void setupClickListeners() {
         binding.fab.setOnClickListener(v -> {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setTitle("Doctor Comment");
-            alertDialog.setMessage(DateUtil.getCurrentDate());
-            final EditText input = new EditText(this);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-            input.setLayoutParams(lp);
-            input.setHint("comment here");
-            alertDialog.setView(input);
-            alertDialog.setCancelable(false);
-            alertDialog.setPositiveButton("Comment", (dialog, which) -> {
+            final Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.dialog_comment);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            TextView btn = dialog.findViewById(R.id.comment);
+            TextView limit = dialog.findViewById(R.id.limit);
+            TextView time = dialog.findViewById(R.id.time);
+            EditText input = dialog.findViewById(R.id.input);
+            time.setText("On " + DateUtil.getCurrentDate());
+            input.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {}
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   limit.setText(input.length() + "/140");
+                }
+            });
+            btn.setOnClickListener(v1 -> {
                 if(!input.getText().toString().equals("")) {
                     if (NetworkUtil.checkInternet()) {
                         Feedback feedback = new Feedback();
@@ -186,9 +203,9 @@ public class PatientDetailActivity extends BaseActivity implements PatientDetail
                         Toast.makeText(PatientDetailActivity.this, getString(R.string.network_not_connected), Toast.LENGTH_SHORT).show();
                 } else
                     Toast.makeText(PatientDetailActivity.this, "Please write comment", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
             });
-            alertDialog.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-            alertDialog.show();
+            dialog.show();
         });
     }
 }
